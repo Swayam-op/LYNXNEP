@@ -1,12 +1,15 @@
 import React,{useEffect,useState} from 'react';
 import {useParams} from 'react-router-dom';
 import db from '../firebase';
-import styled from 'styled-components'
+import styled from 'styled-components';
 import { doc, getDoc } from "firebase/firestore";
+import { Link } from 'react-router-dom';
+import './detail.css';
 const Detail = () => {
   const {id}=useParams();
   const [detailData,setDetailData]=useState({});
-   
+
+
   useEffect(async()=>{
     
     try{
@@ -23,7 +26,11 @@ const Detail = () => {
         console.log(error);
         window.alert(error);
     }
+
+   
   },[id]);
+    
+  
 
   return (
     <Container>
@@ -38,8 +45,10 @@ const Detail = () => {
         <ContentMeta>
             <Controls>
                 <Player>
+                <Link to={'/screen/'+detailData.video} className='link'>
                     <img src="/images/play-icon-black.png" alt="" />
-                    <span>Play</span>
+                    <span > Play </span>
+                </Link>
                 </Player>
                 <Trailer>
                     <img src="/images/play-icon-white.png" alt="" />
@@ -113,6 +122,9 @@ width:100%;
 padding-bottom:24px;
 z-index:2;
 // border:2px solid red;
+
+
+
 img{
     max-width:600px;
     min-width:200px;
@@ -147,8 +159,9 @@ text-align-center;
 text-tranform:uppercase;
 background:rgb(249,249,249);
 border:none;
-color:rgb(0,0,0);
+color:blue;
 box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+
 
 img{
     width:32px;

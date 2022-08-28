@@ -13,7 +13,7 @@ const Header = (props) => {
   const navigate=useNavigate();
   const dispatch=useDispatch();
 
-
+ 
   // selecting user data
   const userName=useSelector(selectUserName);
   const userPhoto = useSelector(selectUserPhoto);
@@ -112,7 +112,7 @@ const Header = (props) => {
        
        {/* <LogOut > <IconContext.Provider value={{ style: { fontSize:'30px' } }}><BsPower/></IconContext.Provider> </LogOut> */}
        <SignOut>
-       <UserImage src={userPhoto} alt=""/>
+       <UserImage src={userPhoto} alt="⛄"/>
        <DropDown>
          <span onClick={handleAuth}><IconContext.Provider value={{ style: { fontSize:'25px' } }}><BsPower/></IconContext.Provider></span>
        </DropDown>

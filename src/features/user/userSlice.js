@@ -1,4 +1,4 @@
-import {createSlice } from '@reduxjs/toolkit';
+import {createSlice} from '@reduxjs/toolkit';
 
 const initialState={
     name:'',
@@ -23,7 +23,7 @@ const userSlice = createSlice({
             state.photo=null;
         },
     }
-})
+}) 
 
 
 export const {setUserLoginDetails,setSignOutState}=userSlice.actions;

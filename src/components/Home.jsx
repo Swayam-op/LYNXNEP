@@ -44,6 +44,7 @@ const Home = (props) => {
             originals=[...originals,{id:doc.id,...doc.data()}]
             break;
           case 'recommend':
+            
             recommends=[...recommends,{id:doc.id,...doc.data()}];
             break;
           case 'new':
