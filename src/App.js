@@ -7,6 +7,7 @@ import Header from './components/Header';
 import Detail from './components/Detail';
 import Screen
  from './components/Screen';
+import Animes from './components/Animes';
 function App() {
   return (
     <div className="App">
@@ -15,8 +16,9 @@ function App() {
        <Routes>
          <Route  path='/' element={<Login/>}/>
          <Route path='/home' element={<Home/>}/>
-         <Route path='/detail/:id'  element={<Detail/>}/>
-         <Route path='/screen/:video' element={<Screen/>} />
+         <Route path='/animes' element={<Animes/>}/>
+         <Route path='/detail/:collectionName/:id'  element={<Detail/>}/>
+         <Route path='/screen/:collectionName/:obj/:video' element={<Screen/>} />
        </Routes>
      </Router>
     </div>

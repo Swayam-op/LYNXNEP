@@ -1,0 +1,21 @@
+.scrollbar {
+    scrollbar-width: thin;
+    scrollbar-color: #000 #343a40;
+  }
+  
+  
+  /* For Chrome, EDGE, Opera, Others */
+  .scrollbar::-webkit-scrollbar {
+    width: 4px;
+  }
+  
+  .scrollbar::-webkit-scrollbar-track { 
+    background: #252422;
+    border-radius: 5px;
+  }
+  
+  .scrollbar::-webkit-scrollbar-thumb { 
+    background:#343a40;
+    border-radius: 5px;
+  }
+ 

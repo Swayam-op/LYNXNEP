@@ -1,5 +1,5 @@
 import React from 'react'
-import {useEffect} from 'react';
+import {useEffect, useCallback} from 'react';
 import {useDispatch,useSelector} from 'react-redux'; 
 
 import styled from 'styled-components';
@@ -24,14 +24,16 @@ const Home = (props) => {
 
   
 
-  let recommends=[];
-  let newDisneys=[];
-  let originals=[];
-  let trendings=[];
+
   
-  const fetchData=async()=>{
+  const fetchData=useCallback(async()=>{
+    let recommends=[];
+    let newDisneys=[];
+    let originals=[];
+    let trendings=[];
     try{
       const querySnapshot = await getDocs(collection(db, "movies"));
+      console.log("home : ",querySnapshot);
       querySnapshot.forEach((doc) => {
         
         // console.log(doc.data());
@@ -68,13 +70,11 @@ const Home = (props) => {
       console.log(error);
     }
     
-  }
+  },[dispatch])
  
   useEffect(()=>{
     fetchData();
-    
- 
-  },[userName]);
+  },[userName, fetchData]);
 
   return (
    
@@ -106,10 +106,8 @@ overflow-x:hidden;
 const BgImage=styled.div`
 height:100vh;
 position:fixed;
-background-position:top;
-background-size:cover;
-background-repeat:no-repeat;
-background-image:url('/images/home-background.png');
+background: rgb(255,255,255);
+background: radial-gradient(circle, rgba(255,255,255,1) 0%, rgba(32,32,32,1) 0%, rgba(18,17,19,1) 79%);
 top:0;
 right:0;
 left:0;

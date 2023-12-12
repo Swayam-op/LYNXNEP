@@ -103,7 +103,7 @@ const Header = (props) => {
           <img src="images/series-icon.svg" alt="" />
           <span>SERIES</span>
         </a>
-        <a href="/home">
+        <a href="/animes">
           <img src="images/series-icon.svg" alt="" />
           <span>ANIMES</span>
         </a>

@@ -1,4 +1,4 @@
-import React,{useEffect,useState} from 'react';
+import React,{useCallback, useEffect,useState} from 'react';
 import {useParams} from 'react-router-dom';
 import db from '../firebase';
 import styled from 'styled-components';
@@ -6,14 +6,13 @@ import { doc, getDoc } from "firebase/firestore";
 import { Link } from 'react-router-dom';
 import './detail.css';
 const Detail = () => {
-  const {id}=useParams();
+  const {id, collectionName}=useParams();
   const [detailData,setDetailData]=useState({});
-
-
-  useEffect(async()=>{
-    
+  
+  const fetchDetail = useCallback(async()=>{
+ 
     try{
-        const docRef = doc(db, "movies", id);
+        const docRef = doc(db, collectionName, id);
         const detail = await getDoc(docRef);
         if (detail.exists()) {
             console.log("Document data:", detail.data());
@@ -26,9 +25,11 @@ const Detail = () => {
         console.log(error);
         window.alert(error);
     }
+  },[id, collectionName])
 
-   
-  },[id]);
+  useEffect(()=>{
+    fetchDetail();
+  });
     
   
 
@@ -45,7 +46,7 @@ const Detail = () => {
         <ContentMeta>
             <Controls>
                 <Player>
-                <Link to={'/screen/'+detailData.video} className='link'>
+                <Link to={'/screen/'+collectionName+'/'+id+'/'+detailData.video} className='link'>
                     <img src="/images/play-icon-black.png" alt="" />
                     <span > Play </span>
                 </Link>
